@@ -1,13 +1,13 @@
 var fs = require('fs');
 var path = require('path');
 
-if ( process.argv.length >= 2 ) {
-	fs.readdir('.', function(error, list) {
-		console.log(process.argv);
+if ( process.argv.length >= 3 ) {
+	dir = process.argv[2];
+	ext = "." + process.argv[3];
+	fs.readdir(dir, function(error, list) {
 		for(var i = 0; i < list.length; ++i) {
-			console.log("---->" + list[i] + " /  " + path.extname('js'));
-			console.log("---->" + process.argv[3]);
-			if ( path.extname(list[i]) == process.argv[2] ) {
+			extname = path.extname( list[i] );
+			if ( path.extname(list[i]) === ext ) {
 				console.log(list[i]);
 			}
 		}
